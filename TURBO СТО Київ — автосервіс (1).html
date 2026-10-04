@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TURBO СТО Київ — автосервіс</title>
+<style>
+:root{--bg:#fff;--fg:#1b1d22;--mut:#6a707c;--card:#f1f3f8;--acc:#0b4fd0;--dk:#2a2c31;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d0f14;--fg:#f2f3f5;--mut:#9aa0ad;--card:#171a21;--acc:#3b7bff}}
+:root[data-theme="dark"]{--bg:#0d0f14;--fg:#f2f3f5;--mut:#9aa0ad;--card:#171a21;--acc:#3b7bff}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{background:var(--bg);color:var(--fg);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden;line-height:1.5}
+.top{display:flex;justify-content:space-between;align-items:center;padding:0 0 0 5vw;background:var(--bg);font-size:14px}
+.top a.call{background:#1688e8;color:#fff;padding:14px 5vw 14px 40px;font-weight:800;text-transform:uppercase;text-decoration:none;clip-path:polygon(18px 0,100% 0,100% 100%,0 100%);cursor:pointer}
+header{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:14px 5vw;background:var(--bg);box-shadow:0 2px 14px rgba(0,0,0,.08)}
+.logo{font-weight:900;letter-spacing:.1em;font-style:italic;color:var(--acc)}.logo i{color:#e5322d}
+#bg{background:none;border:0;font-size:28px;color:var(--fg);cursor:pointer}
+#menu{display:none;position:fixed;top:0;left:0;right:0;background:var(--bg);z-index:30;padding:70px 5vw 24px;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+#menu a{display:block;padding:14px 0;color:var(--fg);text-decoration:none;font-weight:700;text-transform:uppercase;border-bottom:1px solid var(--card)}
+#menu.open{display:block;animation:down .35s}
+@keyframes down{from{transform:translateY(-30px);opacity:0}}
+.btn{display:inline-block;background:var(--acc);color:#fff;padding:16px 28px;text-decoration:none;font-weight:800;text-transform:uppercase;border:2px solid var(--acc);cursor:pointer;font-size:16px;transition:transform .3s,box-shadow .3s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(11,79,208,.4)}
+.btn.out{background:transparent;color:#fff;border-color:#fff}
+.hero{position:relative;text-align:center;color:#fff;padding:60px 5vw 70px;background:linear-gradient(135deg,#0a2a8a,#1a58e0,#0a2a8a);background-size:300% 300%;animation:grad 10s ease infinite;overflow:hidden}
+@keyframes grad{50%{background-position:100% 100%}}
+.hero::before{content:"🔧";position:absolute;font-size:340px;opacity:.1;right:-60px;top:-30px;animation:spin 30s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+h1{font-size:clamp(32px,6vw,68px);line-height:1.05;text-transform:uppercase;font-weight:900;position:relative}
+.gift{display:inline-block;margin:28px 0;padding:16px 22px;border:2px solid #ff4d6d;font-weight:800;text-transform:uppercase;animation:pulse 2s infinite;position:relative}
+@keyframes pulse{50%{box-shadow:0 0 0 10px rgba(255,77,109,.25)}}
+.hero .btn{display:block;width:max-content;margin:0 auto;position:relative}
+section{padding:70px 5vw}
+h2{text-align:center;font-weight:300;text-transform:uppercase;font-size:clamp(24px,4vw,44px);letter-spacing:.02em}
+h2::after{content:"";display:block;width:90px;height:3px;background:var(--acc);margin:18px auto 36px}
+.brands{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px 24px;max-width:900px;margin:auto;font-weight:300;font-size:20px;letter-spacing:.06em}
+.brands span::before{content:"✓";color:var(--acc);margin-right:12px;font-weight:700}
+.steps{background:var(--dk);color:#fff;padding:70px 5vw}
+.steps .in{max-width:760px;margin:auto}
+.st{display:flex;align-items:center;gap:6vw;min-height:150px}
+.st b{font-size:clamp(110px,22vw,220px);font-weight:200;line-height:1;color:rgba(255,255,255,.55);min-width:1.1ch}
+.st p{text-transform:uppercase;font-weight:700;font-size:clamp(15px,2.5vw,20px)}
+.honest{text-align:center}.honest p{max-width:620px;margin:auto;color:var(--mut);font-size:19px}.honest p em{color:var(--acc);font-style:normal;font-weight:700}
+.works{background:var(--dk);color:#fff}
+.works h2{color:#fff}.works h2 em{font-style:normal;color:#6f9bff}
+.wl{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:6px 40px;max-width:980px;margin:auto}
+.wl div{padding:10px 0}.wl div::before{content:"🔧";margin-right:14px;filter:hue-rotate(200deg)}
+.tabs{display:flex;overflow-x:auto;background:var(--card);max-width:900px;margin:auto}
+.tabs button{flex:0 0 auto;min-width:150px;padding:18px 14px;border:0;background:transparent;color:var(--fg);font-weight:600;font-size:15px;cursor:pointer;transition:background .3s;font-family:inherit}
+.tabs button.on{background:var(--acc);color:#fff}
+.info{max-width:900px;margin:12px auto;padding:20px;background:var(--card);border-left:4px solid var(--acc);min-height:80px;animation:down .4s}
+.info b{color:var(--acc)}
+.carbox{position:relative;max-width:900px;margin:auto;background:var(--dk);padding:30px 10px 10px}
+.carbox svg{width:100%;height:auto;display:block}
+.bub{position:absolute;width:clamp(44px,9vw,72px);aspect-ratio:1;border-radius:50%;background:#f1f1f1;display:grid;place-items:center;font-size:clamp(20px,4vw,32px);animation:bob 3s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px)}}
+.promos{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;max-width:980px;margin:auto}
+.promo{background:var(--card);padding:28px;transition:transform .4s,box-shadow .4s;border-top:4px solid var(--acc)}
+.promo:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,0,0,.2)}
+.promo b{font-size:30px;color:var(--acc);display:block}
+.book{max-width:560px;margin:auto;text-align:center}
+.book input,.book select{width:100%;padding:16px;margin-bottom:14px;border:1px solid var(--mut);background:var(--bg);color:var(--fg);font-size:16px}
+.msg{color:var(--acc);font-weight:700;margin-top:12px;display:none}
+#fab{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));width:64px;height:64px;border-radius:50%;background:var(--acc);color:#fff;font-size:30px;display:grid;place-items:center;text-decoration:none;z-index:25;box-shadow:0 8px 24px rgba(11,79,208,.5);animation:bob 2.5s infinite}
+#modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:40;place-items:center;padding:20px}
+#modal.open{display:grid}#modal>div{background:var(--bg);padding:30px;max-width:380px;width:100%;text-align:center}
+#modal input{width:100%;padding:14px;margin:8px 0;border:1px solid var(--mut);background:var(--bg);color:var(--fg);font-size:16px}
+footer{padding:36px 5vw;text-align:center;color:var(--mut);font-size:14px;background:var(--card)}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s,transform .8s}.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+body{background-image:linear-gradient(rgba(11,79,208,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(11,79,208,.05) 1px,transparent 1px),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='170' fill='none' stroke='%230b4fd0' stroke-opacity='.14' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='32' cy='32' r='15' stroke-dasharray='6 4'/%3E%3Ccircle cx='32' cy='32' r='6'/%3E%3Cpath d='M105 38l32 32M99 32a9 9 0 1 0 9 9M141 74a9 9 0 1 0-9-9'/%3E%3Cpolygon points='38,112 51,105 64,112 64,127 51,134 38,127'/%3E%3Ccircle cx='51' cy='119' r='4'/%3E%3Cpath d='M110 122h34M110 134h34M118 146h18'/%3E%3C/svg%3E");background-size:40px 40px,40px 40px,170px 170px}
+.fx{position:fixed;z-index:-1;pointer-events:none;opacity:.13;color:var(--acc)}
+.fx svg{width:100%;height:100%;animation:spin 40s linear infinite}
+.fx.a{width:300px;height:300px;left:-90px;top:18vh}
+.fx.b{width:220px;height:220px;right:-60px;top:55vh}.fx.b svg{animation-direction:reverse;animation-duration:28s}
+.fx.c{width:160px;height:160px;left:60vw;bottom:-50px}
+.garage{display:block;width:100%;max-width:780px;margin:44px auto -70px;position:relative}
+.spark{animation:spark 1.2s infinite}.spark:nth-of-type(2){animation-delay:.4s}.spark:nth-of-type(3){animation-delay:.8s}
+@keyframes spark{0%,100%{opacity:0;transform:translate(0,0)}40%{opacity:1}100%{opacity:0;transform:translate(14px,-18px)}}
+.lift{animation:lift 6s ease-in-out infinite}
+@keyframes lift{50%{transform:translateY(-14px)}}
+section.honest,#brands,#prices,#promo,#book{position:relative}
+</style>
+</head>
+<body>
+<div class="fx a"><svg viewBox='0 0 100 100' fill='none' stroke='currentColor'><circle cx='50' cy='50' r='38' stroke-width='14' stroke-dasharray='11 7'/><circle cx='50' cy='50' r='24' stroke-width='5'/><circle cx='50' cy='50' r='7' fill='currentColor'/></svg></div><div class="fx b"><svg viewBox='0 0 100 100' fill='none' stroke='currentColor'><circle cx='50' cy='50' r='38' stroke-width='14' stroke-dasharray='11 7'/><circle cx='50' cy='50' r='24' stroke-width='5'/><circle cx='50' cy='50' r='7' fill='currentColor'/></svg></div><div class="fx c"><svg viewBox='0 0 100 100' fill='none' stroke='currentColor'><circle cx='50' cy='50' r='38' stroke-width='14' stroke-dasharray='11 7'/><circle cx='50' cy='50' r='24' stroke-width='5'/><circle cx='50' cy='50' r='7' fill='currentColor'/></svg></div>
+<div class="top"><span>📍 м. Київ</span><a class="call" id="callBtn">⊕ Замовити дзвінок</a></div>
+<header><div class="logo">TURBO<i>★</i>СТО КИЇВ</div><button id="bg" aria-label="Меню">☰</button></header>
+<nav id="menu"><a href="#brands">Марки авто</a><a href="#steps">Як ми працюємо</a><a href="#works">Роботи</a><a href="#prices">Обслуговування</a><a href="#promo">Акції</a><a href="#book">Запис на сервіс</a></nav>
+
+<div class="hero">
+<h1>Довірте технічне обслуговування автомобіля професіоналам!</h1>
+<div class="gift">Отримайте подарунок при онлайн запису!</div>
+<a class="btn out" href="#book">Записатися на сервіс</a>
+<svg class="garage" viewBox="0 0 800 190" aria-label="Автомобіль на підйомнику">
+<rect x="0" y="176" width="800" height="14" fill="rgba(255,255,255,.35)"/>
+<rect x="150" y="40" width="14" height="136" fill="#fff" opacity=".8"/><rect x="636" y="40" width="14" height="136" fill="#fff" opacity=".8"/>
+<rect x="140" y="30" width="520" height="8" fill="#ffd23f"/>
+<g class="lift"><path d="M170 120l36-38q16-18 60-22l110-24q70-12 140 4l80 32q50 8 60 36l4 20z" fill="#e8ecf4"/><path d="M262 86l86-20h110l80 30z" fill="#4b5d85"/><circle cx="270" cy="142" r="30" fill="#14161c"/><circle cx="270" cy="142" r="15" fill="#9aa5bd"/><circle cx="560" cy="142" r="30" fill="#14161c"/><circle cx="560" cy="142" r="15" fill="#9aa5bd"/>
+<rect x="190" y="156" width="420" height="8" fill="#ffd23f"/></g>
+<g stroke="#ffd23f" stroke-width="3"><circle class="spark" cx="560" cy="160" r="3" fill="#ffd23f"/><circle class="spark" cx="548" cy="166" r="2.5" fill="#ffd23f"/><circle class="spark" cx="572" cy="164" r="2" fill="#ffd23f"/></g>
+</svg>
+</div>
+
+<section id="brands"><h2 class="reveal">З якими автомобілями ми працюємо:</h2>
+<div class="brands reveal">
+<span>CHEVROLET</span><span>CITROEN</span><span>FORD</span><span>GEELY</span><span>KIA</span><span>LADA</span><span>MITSUBISHI</span><span>NISSAN</span><span>RAVON</span><span>RENAULT</span><span>SSANGYONG</span><span>SUZUKI</span><span>VOLKSWAGEN</span><span>ZAZ</span><span>FAW</span><span>FIAT</span><span>HONDA</span><span>HYUNDAI</span><span>MAZDA</span><span>MG</span><span>OPEL</span><span>PEUGEOT</span><span>SEAT</span><span>SKODA</span><span>TOYOTA</span><span>UAZ</span><span>GAZ</span>
+</div></section>
+
+<div class="steps" id="steps"><div class="in">
+<div class="st reveal"><b>1</b><p>Розкажіть про проблему майстру (якщо потрібно, підключимо експерта)</p></div>
+<div class="st reveal"><b>2</b><p>Проведемо діагностику, майстер виявить можливі причини поломки і шляхи їх усунення</p></div>
+<div class="st reveal"><b>3</b><p>Ви приймаєте рішення по: ремонту, обслуговуванню, заміні комплектуючих</p></div>
+<div class="st reveal"><b>4</b><p>При необхідності, ви можете купити будь-яку запчастину на місці</p></div>
+</div></div>
+
+<section class="honest"><h2 class="reveal">Все прозоро та чесно</h2>
+<p class="reveal">Переживати про обман і “накручування” ціни не доведеться, адже у нас завжди докладно пояснюють і показують <em>реальні проблеми авто</em>.</p></section>
+
+<section class="works" id="works"><h2 class="reveal">Пропонуємо виконати <em>такі роботи:</em></h2>
+<div class="wl reveal">
+<div>Регламентне технічне обслуговування</div><div>Заміна моторної та трансмісійної олії</div><div>Діагностика та заміна технічних рідин</div><div>Діагностика та ремонт двигуна</div><div>Діагностика та ремонт трансмісії</div><div>Діагностика та ремонт ходової частини</div><div>Діагностика та ремонт гальмівної системи</div><div>Діагностика та ремонт паливної системи</div><div>Діагностика та ремонт електрообладнання</div><div>Діагностика та ремонт кондиціонування</div><div>Діагностика та ремонт системи запалювання</div><div>Перевірка та регулювання геометрії кутів встановлення коліс</div><div>Продаж та встановлення додаткового обладнання</div><div>Продаж, встановлення та ремонт ГБО</div><div>Проведення антикорозійної обробки</div><div>Тонування скла</div><div>Продаж оригінальних та неоригінальних запчастин</div>
+</div></section>
+
+<section id="prices"><h2 class="reveal">Обслуговування</h2>
+<div class="tabs reveal" id="tabs"></div>
+<div class="info" id="info"></div>
+<div class="carbox reveal">
+<svg viewBox="0 0 800 260" aria-label="Автомобіль">
+<path d="M70 190 L110 130 Q130 100 200 95 L330 60 Q420 40 520 62 L640 110 Q720 125 740 160 L745 195 Z" fill="#cfd3da"/>
+<path d="M240 100 L340 70 L500 72 L600 112 Z" fill="#6b7280"/>
+<circle cx="200" cy="198" r="48" fill="#222"/><circle cx="200" cy="198" r="28" fill="#aab"/>
+<circle cx="600" cy="198" r="48" fill="#222"/><circle cx="600" cy="198" r="28" fill="#aab"/>
+</svg>
+<div class="bub" style="left:14%;top:12%">🛢️</div><div class="bub" style="left:30%;top:42%;animation-delay:.4s">🔋</div><div class="bub" style="left:44%;top:30%;animation-delay:.8s">📟</div><div class="bub" style="left:56%;top:8%;animation-delay:1.2s">🌀</div><div class="bub" style="left:20%;top:62%;animation-delay:1.6s">🛞</div><div class="bub" style="left:46%;top:62%;animation-delay:2s">⚙️</div><div class="bub" style="left:76%;top:34%;animation-delay:.6s">🚗</div><div class="bub" style="left:82%;top:60%;animation-delay:1s">📐</div>
+</div>
+<div style="text-align:center;margin-top:24px"><a class="btn" href="#book">Детальніше</a></div>
+</section>
+
+<section id="promo"><h2 class="reveal">Економте з акціями</h2>
+<p class="reveal" style="text-align:center;color:var(--mut);margin:-16px 0 30px">Наші спеціальні пропозиції допоможуть <b style="color:var(--acc)">заощадити:</b></p>
+<div class="promos">
+<div class="promo reveal"><b>Подарунок</b>При онлайн запису на сервіс</div>
+<div class="promo reveal"><b>-10%</b>На діагностику ходової</div>
+<div class="promo reveal"><b>ТО</b>Знижка на комплексне обслуговування</div>
+</div></section>
+
+<section id="book"><h2 class="reveal">Записатися на сервіс</h2>
+<div class="book reveal">
+<input id="n" placeholder="Ваше ім’я"><input id="p" type="tel" placeholder="Телефон, +380…"><input id="c" placeholder="Марка та модель авто">
+<select><option>Діагностика</option><option>Регламентне ТО</option><option>Заміна оливи</option><option>Ходова частина</option><option>Гальма</option><option>ГБО</option></select>
+<button class="btn" id="go" style="width:100%">Записатися на сервіс</button><p class="msg" id="m"></p>
+</div></section>
+
+<footer>© 2026 TURBO СТО, Київ · м. Київ, вул. Автозаводська, 1 · +380 44 000 00 00</footer>
+<a id="fab" href="#book" aria-label="Запис">🚗</a>
+<div id="modal"><div><h3>Замовити дзвінок</h3><input id="mp" type="tel" placeholder="Ваш телефон, +380…"><button class="btn" id="mg" style="width:100%;margin-top:8px">Передзвоніть мені</button><p class="msg" id="mm"></p></div></div>
+
+<script>
+var T=[["Обслуговування двигуна","🧰","Зняття та встановлення захисту піддону картера двигуна, заміна моторної оливи та фільтра, заміна повітряного фільтра двигуна — <b>від 78 грн</b>"],
+["Обслуговування паливної системи","⛽","Діагностика та чистка паливної системи, заміна паливного фільтра."],
+["Технічні рідини","🛢️","Заміна охолоджувальної, гальмівної рідини та рідини гідропідсилювача."],
+["Ходова частина","🛞","Діагностика та ремонт підвіски, рульового керування, регулювання сходження."],
+["Гальмівна система","🛑","Заміна колодок, дисків, діагностика гальмівної системи."]];
+var tb=document.getElementById('tabs'),inf=document.getElementById('info');
+function sel(i){[].forEach.call(tb.children,function(b,j){b.className=j==i?'on':''});inf.style.animation='none';inf.offsetWidth;inf.style.animation='';inf.innerHTML='ⓘ '+T[i][2]}
+T.forEach(function(t,i){var b=document.createElement('button');b.textContent=t[1]+' '+t[0];b.onclick=function(){sel(i)};tb.appendChild(b)});sel(0);
+var mn=document.getElementById('menu');
+document.getElementById('bg').onclick=function(){mn.classList.toggle('open')};
+[].forEach.call(mn.querySelectorAll('a'),function(a){a.onclick=function(){mn.classList.remove('open')}});
+var md=document.getElementById('modal');
+document.getElementById('callBtn').onclick=function(){md.classList.add('open')};
+md.onclick=function(e){if(e.target==md)md.classList.remove('open')};
+function chk(v,el,ok){el.style.display='block';el.textContent=v?ok:'Будь ласка, вкажіть номер телефону.'}
+document.getElementById('mg').onclick=function(){chk(document.getElementById('mp').value.trim(),document.getElementById('mm'),'Дякуємо! Ми зателефонуємо за 15 хвилин.')};
+document.getElementById('go').onclick=function(){chk(document.getElementById('p').value.trim(),document.getElementById('m'),'Дякуємо, '+document.getElementById('n').value.trim()+'! Ваш подарунок чекає на вас.')};
+var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});
+[].forEach.call(document.querySelectorAll('.reveal'),function(el){io.observe(el)});
+</script>
+</body>
+</html>
